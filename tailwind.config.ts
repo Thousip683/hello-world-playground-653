@@ -57,6 +57,37 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        civic: {
+          blue: "hsl(var(--civic-blue))",
+          "blue-light": "hsl(var(--civic-blue-light))",
+          green: "hsl(var(--civic-green))",
+          "green-light": "hsl(var(--civic-green-light))",
+          amber: "hsl(var(--civic-amber))",
+          "amber-light": "hsl(var(--civic-amber-light))",
+          red: "hsl(var(--civic-red))",
+          "red-light": "hsl(var(--civic-red-light))",
+        },
+        status: {
+          submitted: "hsl(var(--status-submitted))",
+          "submitted-light": "hsl(var(--status-submitted-light))",
+          progress: "hsl(var(--status-progress))",
+          "progress-light": "hsl(var(--status-progress-light))",
+          resolved: "hsl(var(--status-resolved))",
+          "resolved-light": "hsl(var(--status-resolved-light))",
+        },
+      },
+      backgroundImage: {
+        "gradient-hero": "var(--gradient-hero)",
+        "gradient-card": "var(--gradient-card)",
+        "gradient-success": "var(--gradient-success)",
+      },
+      boxShadow: {
+        "card": "var(--shadow-card)",
+        "elevated": "var(--shadow-elevated)",
+      },
+      transitionProperty: {
+        "smooth": "var(--transition-smooth)",
+        "bounce": "var(--transition-bounce)",
       },
       borderRadius: {
         lg: "var(--radius)",
