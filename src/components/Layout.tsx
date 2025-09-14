@@ -6,7 +6,7 @@ import { ProfileDropdown } from "@/components/ProfileDropdown";
 
 interface LayoutProps {
   children: ReactNode;
-  type?: "citizen" | "admin";
+  type?: "citizen" | "admin" | "department";
 }
 
 export const Layout = ({ children, type = "citizen" }: LayoutProps) => {
@@ -28,19 +28,27 @@ export const Layout = ({ children, type = "citizen" }: LayoutProps) => {
     { path: "/admin/analytics", label: "Analytics", icon: BarChart3 },
   ];
 
-  const navItems = type === "admin" ? adminNavItems : citizenNavItems;
+  const departmentNavItems = [
+    { path: "/department/dashboard", label: "My Reports", icon: FileText },
+  ];
+
+  const navItems = type === "admin" ? adminNavItems : 
+                  type === "department" ? departmentNavItems : 
+                  citizenNavItems;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <header className="bg-card border-b shadow-card sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <Link to={type === "admin" ? "/admin/dashboard" : "/"} className="flex items-center space-x-2">
+            <Link to={type === "admin" ? "/admin/dashboard" : type === "department" ? "/department/dashboard" : "/"} className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
                 <FileText className="w-5 h-5 text-primary-foreground" />
               </div>
               <span className="text-xl font-bold text-foreground">
-                {type === "admin" ? "CivicReport Admin" : "CivicReport"}
+                {type === "admin" ? "CivicReport Admin" : 
+                 type === "department" ? "Department Portal" : 
+                 "CivicReport"}
               </span>
             </Link>
 
@@ -108,7 +116,12 @@ export const Layout = ({ children, type = "citizen" }: LayoutProps) => {
               })}
               {type === "admin" && (
                 <div className="flex flex-col space-y-2 mt-2">
-                  <span className="text-xs text-muted-foreground pl-2">Admin Panel</span>
+                  <span className="text-xs text-muted-foreground pl-2">Quick Links</span>
+                  <Button variant="outline" size="sm" asChild className="w-full">
+                    <Link to="/department/login" onClick={() => setMobileMenuOpen(false)}>
+                      Department Portal
+                    </Link>
+                  </Button>
                   <Button variant="outline" size="sm" asChild className="w-full">
                     <Link to="/" onClick={() => setMobileMenuOpen(false)}>
                       View Citizen Site
@@ -116,12 +129,34 @@ export const Layout = ({ children, type = "citizen" }: LayoutProps) => {
                   </Button>
                 </div>
               )}
+              {type === "department" && (
+                <div className="flex flex-col space-y-2 mt-2">
+                  <span className="text-xs text-muted-foreground pl-2">Quick Links</span>
+                  <Button variant="outline" size="sm" asChild className="w-full">
+                    <Link to="/admin/login" onClick={() => setMobileMenuOpen(false)}>
+                      Admin Portal
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild className="w-full">
+                    <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+                      Citizen Portal
+                    </Link>
+                  </Button>
+                </div>
+              )}
               {type === "citizen" && (
-                <Button variant="outline" size="sm" asChild className="w-full mt-2">
-                  <Link to="/admin/login" onClick={() => setMobileMenuOpen(false)}>
-                    Staff Login
-                  </Link>
-                </Button>
+                <div className="flex flex-col space-y-2 mt-2">
+                  <Button variant="outline" size="sm" asChild className="w-full">
+                    <Link to="/admin/login" onClick={() => setMobileMenuOpen(false)}>
+                      Staff Login
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild className="w-full">
+                    <Link to="/department/login" onClick={() => setMobileMenuOpen(false)}>
+                      Department Login
+                    </Link>
+                  </Button>
+                </div>
               )}
             </nav>
           </div>

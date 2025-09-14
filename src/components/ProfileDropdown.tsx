@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 
 interface ProfileDropdownProps {
-  type?: 'citizen' | 'admin';
+  type?: 'citizen' | 'admin' | 'department';
 }
 
 export const ProfileDropdown = ({ type = 'citizen' }: ProfileDropdownProps) => {
@@ -46,6 +46,8 @@ export const ProfileDropdown = ({ type = 'citizen' }: ProfileDropdownProps) => {
     await signOut();
     if (type === 'admin') {
       navigate('/admin/login');
+    } else if (type === 'department') {
+      navigate('/department/login');
     } else {
       navigate('/');
     }
@@ -68,6 +70,8 @@ export const ProfileDropdown = ({ type = 'citizen' }: ProfileDropdownProps) => {
   const getUserRole = () => {
     if (type === 'admin') {
       return user.user_metadata?.department || 'Admin';
+    } else if (type === 'department') {
+      return user.user_metadata?.department || 'Department Staff';
     }
     return 'Citizen';
   };

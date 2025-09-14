@@ -24,6 +24,8 @@ import AdminIssues from "./pages/admin/AdminIssues";
 import AdminIssueDetail from "./pages/admin/AdminIssueDetail";
 import AdminAssign from "./pages/admin/AdminAssign";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import DepartmentLogin from "./pages/DepartmentLogin";
+import DepartmentDashboard from "./pages/DepartmentDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -79,6 +81,9 @@ function App() {
                 <Route path="/admin/issues/:id" element={<Layout type="admin"><AdminIssueDetail /></Layout>} />
                 <Route path="/admin/assign" element={<Layout type="admin"><AdminAssign /></Layout>} />
                 <Route path="/admin/analytics" element={<Layout type="admin"><AdminAnalytics /></Layout>} />
+                
+                <Route path="/department/login" element={<DepartmentLogin />} />
+                <Route path="/department/dashboard" element={<Layout type="department"><DepartmentDashboard /></Layout>} />
                 
                 <Route path="*" element={<NotFound />} />
               </Routes>

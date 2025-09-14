@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { FileText, MapPin, Bell, BarChart3, Users, Shield, Zap, CheckCircle, Clock, TrendingUp } from "lucide-react";
+import { FileText, MapPin, Bell, BarChart3, Users, Shield, Zap, CheckCircle, Clock, TrendingUp, Building } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { IssueStatsChart } from "@/components/charts/IssueStatsChart";
 import { useAuth } from "@/hooks/useAuth";
